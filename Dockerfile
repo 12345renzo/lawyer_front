@@ -1,40 +1,30 @@
-# Etapa de construcción
-FROM node:22 AS builder
+FROM node:18-alpine
 
-# Configuración del entorno
-ENV NODE_ENV=development
-ENV NEXT_TELEMETRY_DISABLED=1
-
-# Instalar herramientas de compilación necesarias
-RUN apt-get update && apt-get install -y \
-  python3 \
-  make \
-  g++ \
-  && rm -rf /var/lib/apt/lists/*
-
-# Crear y configurar el directorio de trabajo
 WORKDIR /app
 
-# 1. Copiar archivos de dependencias
-COPY package.json package-lock.json* ./
+# Cambiar propietario del directorio de trabajo al usuario node existente
+RUN chown -R node:node /app
 
-# 2. Instalar dependencias
-RUN npm ci --force
-RUN npm rebuild
+# Cambiar a usuario node (que ya tiene UID 1000)
+USER node
 
-# 3. Copiar el resto de los archivos
-COPY --chown=1000:1000 . .
+COPY --chown=node:node package.json package-lock.json* ./
+RUN npm install
 
-# 4. Construir la aplicación (opcional para desarrollo)
-# RUN npm run build
+COPY --chown=node:node . .
 
-# Configurar usuario no-root
-RUN chown -R 1000:1000 /app \
-  && mkdir -p /home/node \
-  && chown -R 1000:1000 /home/node
+# Crear directorio .next con permisos correctos
+RUN mkdir -p .next && chown -R node:node .next
 
-USER 1000
+# Argumento para determinar el entorno
+ARG NODE_ENV=development
+ENV NODE_ENV=${NODE_ENV}
 
-# Exponer puerto y ejecutar
+# Solo construye si es producción
+RUN if [ "$NODE_ENV" = "production" ]; then npm run build; fi
+
 EXPOSE 3000
-CMD ["npm", "run", "dev"]
+
+# Comando condicional con verificación de permisos
+CMD chown -R node:node /app/.next 2>/dev/null || true && \
+  if [ "$NODE_ENV" = "production" ]; then npm start; else npm run dev; fi
