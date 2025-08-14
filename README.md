@@ -1,36 +1,132 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# LexGest - Frontend
 
-## Getting Started
+Sistema de gestión para despachos jurídicos construido con Next.js 14, TypeScript y Tailwind CSS.
 
-First, run the development server:
+## 🏗️ Arquitectura del Proyecto
+
+### Estructura de Componentes
+
+El proyecto está completamente componetizado siguiendo principios de responsabilidad única y reutilización:
+
+#### 📁 Layout Components (`/src/components/layout/`)
+- **ThemeProvider**: Contexto global para manejo de tema claro/oscuro
+- **Navbar**: Navegación principal con menú responsive
+- **Footer**: Pie de página con enlaces y información de contacto
+
+#### 🎨 UI Components (`/src/components/ui/`)
+- **Button**: Botón reutilizable con múltiples variantes y estados
+- **ChatWidget**: Widget de chat flotante para soporte
+
+#### 📄 Section Components (`/src/components/sections/`)
+- **HeroSection**: Sección principal de la landing page
+- **FeaturesSection**: Características del producto
+- **DemoSection**: Demostración interactiva de funcionalidades
+- **TestimonialsSection**: Testimonios de clientes
+- **PricingSection**: Planes y precios
+
+#### 🖥️ Dashboard Components (`/src/components/dashboard/`)
+- **Sidebar**: Navegación lateral del dashboard
+- **Header**: Barra superior con búsqueda y controles
+- **StatsCards**: Tarjetas de estadísticas
+- **RecentCases**: Lista de expedientes recientes
+- **ScheduleWidget**: Widget de agenda
+- **QuickActions**: Acciones rápidas
+- **CasesTable**: Tabla de gestión de expedientes
+- **PlaceholderTab**: Placeholder para secciones en desarrollo
+
+### 🎯 Principios de Diseño
+
+1. **Responsabilidad Única**: Cada componente tiene una sola responsabilidad
+2. **Reutilización**: Componentes diseñados para ser reutilizables
+3. **Props Interface**: Todas las props están tipadas con TypeScript
+4. **Theme Integration**: Integración nativa con sistema de temas
+5. **Accessibility**: Componentes accesibles por defecto
+
+### 🔧 Características Técnicas
+
+- **TypeScript**: Tipado estático completo
+- **Tailwind CSS**: Sistema de diseño utility-first
+- **Responsive Design**: Mobile-first approach
+- **Dark Mode**: Soporte nativo para tema oscuro
+- **Performance**: Lazy loading y optimizaciones
+- **Accessibility**: ARIA labels y navegación por teclado
+
+## 🚀 Instalación
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📱 Páginas Disponibles
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Landing Page (`/`)
+- Hero section con call-to-action
+- Características del producto
+- Demo interactiva
+- Testimonios
+- Planes de precios
+- Formulario de contacto
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Dashboard (`/dashboard`)
+- Panel principal con estadísticas
+- Gestión de expedientes
+- Agenda y calendario
+- Acciones rápidas
+- Navegación por pestañas
 
-## Learn More
+## 🎨 Sistema de Temas
 
-To learn more about Next.js, take a look at the following resources:
+El proyecto incluye un sistema de temas completo:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **ThemeProvider**: Contexto global para estado del tema
+- **useTheme Hook**: Hook personalizado para acceder al tema
+- **Persistencia**: Preferencias guardadas en localStorage
+- **Auto-detect**: Detección automática de preferencia del sistema
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🔄 Estado y Gestión
 
-## Deploy on Vercel
+- **React Hooks**: useState, useEffect para estado local
+- **Context API**: Para estado global del tema
+- **Props Drilling**: Minimizado usando composición de componentes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📱 Responsive Design
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Mobile First**: Diseño optimizado para móviles
+- **Breakpoints**: Sistema de breakpoints de Tailwind
+- **Touch Friendly**: Interacciones optimizadas para touch
+- **Progressive Enhancement**: Funcionalidad básica en todos los dispositivos
+
+## 🧪 Testing
+
+```bash
+npm run test
+npm run test:watch
+```
+
+## 🚀 Build y Deploy
+
+```bash
+npm run build
+npm start
+```
+
+## 📚 Documentación de Componentes
+
+Cada componente incluye:
+- Interface TypeScript completa
+- Props documentadas
+- Ejemplos de uso
+- Variantes disponibles
+
+## 🤝 Contribución
+
+1. Fork el proyecto
+2. Crea una rama para tu feature
+3. Commit tus cambios
+4. Push a la rama
+5. Abre un Pull Request
+
+## 📄 Licencia
+
+Este proyecto está bajo la Licencia MIT.
