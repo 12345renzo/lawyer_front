@@ -84,7 +84,9 @@ const PricingSection: React.FC<PricingSectionProps> = ({ className }) => {
               Despacho
             </span>
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300">
+          <p className={`text-xl ${
+                      isDarkMode ? "text-white" : "text-gray-600"
+                    }`}>
             Desde abogados independientes hasta grandes bufetes
           </p>
         </div>

@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from 'react';
-import { Scale, Moon, Sun, Menu, X } from 'lucide-react';
-import { useTheme } from './ThemeProvider';
-import Button from '../ui/Button';
+import React, { useState } from "react";
+import { Scale, Moon, Sun, Menu, X } from "lucide-react";
+import { useTheme } from "./ThemeProvider";
+import Button from "../ui/Button";
 
 interface NavbarProps {
   className?: string;
@@ -18,24 +18,32 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
   };
 
   const navItems = [
-    { href: '#inicio', label: 'Inicio' },
-    { href: '#funcionalidades', label: 'Funcionalidades' },
-    { href: '#precios', label: 'Precios' },
-    { href: '#contacto', label: 'Contacto' },
+    { href: "#inicio", label: "Inicio" },
+    { href: "#funcionalidades", label: "Funcionalidades" },
+    { href: "#precios", label: "Precios" },
+    { href: "#contacto", label: "Contacto" },
   ];
 
   const themeClasses = isDarkMode
-    ? 'bg-[#1E1E2E]/95 border-gray-700'
-    : 'bg-white/95 border-gray-200';
+    ? "bg-[#1E1E2E]/95 border-gray-700"
+    : "bg-white/95 border-gray-200";
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${themeClasses} backdrop-blur-md border-b ${className}`}>
+    <nav
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${themeClasses} backdrop-blur-md border-b ${className}`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex items-center">
             <Scale className="h-8 w-8 text-blue-600 mr-2" />
-            <span className="font-bold text-xl">LexGest</span>
+            <span
+              className={`font-bold text-xl ${
+                isDarkMode ? "text-white" : "text-gray-900"
+              }`}
+            >
+              LexGest
+            </span>
           </div>
 
           {/* Desktop Menu */}
@@ -44,7 +52,9 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
               <a
                 key={item.href}
                 href={item.href}
-                className="hover:text-blue-600 transition-colors"
+                className={`hover:text-blue-600 transition-colors font-medium ${
+                isDarkMode ? "text-white" : "text-gray-900"
+              }`}
               >
                 {item.label}
               </a>
@@ -56,7 +66,11 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
               onClick={toggleTheme}
               className="p-2 rounded-lg hover:bg-gray-400 hover:dark:bg-gray-800 font-black hover:dark:text-white"
             >
-              {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+              {isDarkMode ? (
+                <Sun className="h-5 w-5" />
+              ) : (
+                <Moon className="h-5 w-5" />
+              )}
             </Button>
           </div>
 
@@ -68,7 +82,11 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
               onClick={toggleTheme}
               className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 mr-2"
             >
-              {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+              {isDarkMode ? (
+                <Sun className="h-5 w-5" />
+              ) : (
+                <Moon className="h-5 w-5" />
+              )}
             </Button>
             <Button
               variant="ghost"
@@ -76,7 +94,11 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
               onClick={toggleMobileMenu}
               className="p-2"
             >
-              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isMobileMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </Button>
           </div>
         </div>
@@ -89,7 +111,9 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
                 <a
                   key={item.href}
                   href={item.href}
-                  className="block px-3 py-2 hover:text-blue-600 transition-colors"
+                  className={`block px-3 py-2 hover:text-blue-600 transition-colors" ${
+                isDarkMode ? "text-white" : "text-gray-900"
+              }`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.label}

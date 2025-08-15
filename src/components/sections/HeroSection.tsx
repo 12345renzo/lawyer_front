@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React from 'react';
 import { FileText, Users, Calendar } from 'lucide-react';
 import { useTheme } from '../layout/ThemeProvider';
 import Button from '../ui/Button';
@@ -35,7 +35,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
               </span>{' '}
               con LexGest
             </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-300">
+            <p className={`text-xl ${
+                isDarkMode ? "text-gray-300": "text-black"
+              }`}>
               La solución todo en uno para gestión de casos, clientes, facturación y más.
               Simple, seguro y eficiente.
             </p>
@@ -45,7 +47,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
                 size="lg"
                 className={`${isDarkMode
                   ? 'bg-yellow-500 hover:bg-yellow-400 text-gray-900 font-black'
-                  : 'bg-blue-600 hover:bg-blue-700'
+                  : 'bg-blue-600 hover:bg-blue-700 text-white font-black'
                 } shadow-lg hover:shadow-xl transform hover:scale-105`}
               >
                 Prueba Gratis 30 Días
@@ -56,7 +58,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
                 size="lg"
                 className={`${isDarkMode
                   ? 'border-gray-600 hover:border-yellow-400 hover:text-yellow-400 text-white font-black'
-                  : 'border-gray-300 hover:border-blue-600 hover:text-blue-600'
+                  : 'border-black text-black font-black hover:border-blue-600 hover:text-blue-600'
                 }`}
               >
                 Ver Demo

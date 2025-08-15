@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from 'react';
-import { MessageCircle, X } from 'lucide-react';
-import { useTheme } from '../layout/ThemeProvider';
-import Button from './Button';
+import React, { useState } from "react";
+import { MessageCircle, X } from "lucide-react";
+import { useTheme } from "../layout/ThemeProvider";
+import Button from "./Button";
 
 interface ChatWidgetProps {
   className?: string;
@@ -18,20 +18,32 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ className }) => {
   };
 
   const themeClasses = isDarkMode
-    ? 'bg-gray-800 border-gray-700'
-    : 'bg-white border-gray-200';
+    ? "bg-gray-800 border-gray-700"
+    : "bg-white border-gray-200";
 
   const buttonClasses = isDarkMode
-    ? 'bg-yellow-500 hover:bg-yellow-400 text-gray-900'
-    : 'bg-blue-600 hover:bg-blue-700 text-white';
+    ? "bg-yellow-500 hover:bg-yellow-400 text-gray-900"
+    : "bg-blue-600 hover:bg-blue-700 text-white";
 
   return (
     <>
       {/* Chat Popup */}
       {showChatPopup && (
-        <div className={`fixed bottom-20 right-4 w-80 ${themeClasses} rounded-lg shadow-2xl border z-50 ${className}`}>
-          <div className={`p-4 border-b ${isDarkMode ? 'border-gray-700' : 'border-gray-200'} flex justify-between items-center`}>
-            <h3 className="font-semibold">Chat de Soporte</h3>
+        <div
+          className={`fixed bottom-20 right-4 w-80 ${themeClasses} rounded-lg shadow-2xl border z-50 ${className}`}
+        >
+          <div
+            className={`p-4 border-b ${
+              isDarkMode ? "border-gray-700" : "border-gray-200"
+            } flex justify-between items-center`}
+          >
+            <h3
+              className={`font-semibold ${
+                isDarkMode ? "text-white" : "text-gray-900"
+              }`}
+            >
+              Chat de Soporte
+            </h3>
             <Button
               variant="ghost"
               size="sm"
@@ -50,8 +62,8 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ className }) => {
               placeholder="Escribe tu mensaje..."
               className={`w-full p-2 border rounded-lg text-sm ${
                 isDarkMode
-                  ? 'border-gray-600 bg-gray-700 text-gray-100 placeholder-gray-400'
-                  : 'border-gray-300 bg-white text-gray-900 placeholder-gray-500'
+                  ? "border-gray-600 bg-gray-700 text-gray-100 placeholder-gray-400"
+                  : "border-gray-300 bg-white text-gray-900 placeholder-gray-500"
               } focus:outline-none focus:ring-2 focus:ring-blue-500`}
             />
           </div>
