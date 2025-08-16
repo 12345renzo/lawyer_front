@@ -15,7 +15,7 @@ export default function LayoutLanding({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es">
+    <html lang="es" className='dark'>
       <body className="antialiased">
         {children}
       </body>

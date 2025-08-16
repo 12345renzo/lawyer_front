@@ -84,7 +84,9 @@ const StatsCards: React.FC<StatsCardsProps> = ({ className }) => {
               </div>
               <span className="text-sm text-green-600 font-medium">{stat.change}</span>
             </div>
-            <div className="text-2xl font-bold mb-1">{stat.value}</div>
+            <div className={`text-2xl font-bold mb-1  ${
+                  isDarkMode ? "text-white" : "text-black"
+                }`}>{stat.value}</div>
             <div className="text-sm text-gray-500">{stat.label}</div>
           </div>
         );
